@@ -1,0 +1,59 @@
+"Table 080-0022 Retail commodity survey based on the North American Industry Classification System (NAICS), quarterly (dollars x 1,000)(1,2,3)"
+Survey or program details:
+Retail Commodity Survey - 2008
+Geography,Canada,Canada
+Retail commodity classification,Sporting goods,Ski and snowboard equipment and accessories for alpine and cross country
+North American Industry Classification System (NAICS),"Sporting goods, hobby, book and music stores [451] ","Sporting goods, hobby, book and music stores [451] "
+Q1 2004,472941,94376
+Q2 2004,665028,F
+Q3 2004,632671,19446
+Q4 2004,622135,132622
+Q1 2005,477588,110517
+Q2 2005,648176,F
+Q3 2005,647368,F
+Q4 2005,600456,143591
+Q1 2006,476563,121258
+Q2 2006,709911,x
+Q3 2006,671002,x
+Q4 2006,647357,x
+Q1 2007,521742,115921
+Q2 2007,734863,x
+Q3 2007,689435,x
+Q4 2007,719819,x
+Q1 2008,505702,116464
+Q2 2008,729419,x
+Q3 2008,681223,x
+Q4 2008,651138,x
+Q1 2009,504825,96211
+Q2 2009,798214,F
+Q3 2009,771832,F
+Q4 2009,653253,F
+Q1 2010,514804,F
+Q2 2010,709272,F
+Q3 2010,715662,F
+Q4 2010,667058,F
+Q1 2011,561329,F
+Q2 2011,775312,F
+Q3 2011,777486,x
+Q4 2011,763985,x
+Q1 2012,585062,F
+Q2 2012,781904,x
+Q3 2012,822851,x
+Q4 2012,730091,x
+Q1 2013,559568,F
+Q2 2013,835794,F
+Q3 2013,869656,F
+Q4 2013,799954,F
+Q1 2014,556477,F
+Q2 2014,829652,F
+Legend:
+E,Use with caution
+F,Too unreliable to be published
+x,Suppressed to meet the confidentiality requirements of the Statistics Act
+Footnotes:
+1,"The quality indicator is a measure of the coefficient of variation and may be adjusted to take into account the imputation rate. Quality indicator: Code A=Excellent (coefficient of variation less than or equal to 5%). Code B=Very good (coefficient of variation greater than 5%, but less than or equal to 10%). Code C=Good (coefficient of variation greater than 10%, but less than or equal to 16.5%). Code D=Fair (coefficient of variation greater than 16.5%, but less than or equal to 25%). Code E=Poor (coefficient of variation greater than 25%)."
+2,This CANSIM table replaces terminated tables 80-0018 and 80-0019.
+3,"As of the first quarter 2013, data will be based on the 2012 North American Industry Classification System (NAICS)."
+Source:
+"Statistics Canada. Table 080-0022 - Retail commodity survey based on the North American Industry Classification System (NAICS), quarterly (dollars)"
+"(accessed: December 07, 2014)"

@@ -1,0 +1,5 @@
+.Rapp.history
+.Rhistory
+.Rdata
+*.Rout
+CSV/
