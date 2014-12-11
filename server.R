@@ -38,10 +38,10 @@ shinyServer(function(input, output) {
        future.xts <- mt9.xts[select.string][,1:(length(names(mt9.xts))-1)]
        
        #par(mfrow=c(row=1,col=3))
-       par(mfrow=c(row=1,col=1))
+       par(mfrow=c(row=1,col=2))
        model.and.plot('sb.09', smt9.xts, future.xts, "lm", NULL)
        #model.and.plot('sb.09', smt9.xts, future.xts, "svm", "gamma=0.1")
-       #model.and.plot('sb.09', smt9.xts, future.xts, "randomForest", "ntree=50")
+       model.and.plot('sb.09', smt9.xts, future.xts, "randomForest", "ntree=50")
     })
 
     searchterms <- read.csv("report.csv", skip=4, nrow=1)

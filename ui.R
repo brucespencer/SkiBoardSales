@@ -2,7 +2,7 @@ require(shiny)
 # Define UI for the Web App
 shinyUI(fluidPage(
                                         # Application title
-    titlePanel("CyberSocial Moncton: Predict Ski and Snowboard Sales"),
+    titlePanel("Predict Ski and Snowboard Sales"),
                                         # bins
     sidebarLayout(
         sidebarPanel(
