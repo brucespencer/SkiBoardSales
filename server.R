@@ -3,12 +3,9 @@ require(lubridate)
 source("predict.sales.R")
 
 shinyServer(function(input, output) {
-    # Expression that generates a histogram. The
-    # expression is wrapped in a call to renderPlot
-    # to indicate that:
-    # 1) It is "reactive" and therefore should be
-    # automatically re-executed when inputs change
-    # 2) Its output type is a plot
+
+    latest.report <- choose.newest.file("~/Downloads", "report*.csv")
+
     output$salesPlot <- renderPlot({
         
        #Monthly
@@ -18,7 +15,7 @@ shinyServer(function(input, output) {
        c09$Date<-as.Date(as.yearmon(c09$Date, format="%b-%Y"))
        
        #Weekly
-       trend <- read.csv("report.csv", skip=4, nrow=570)
+       trend <- read.csv(latest.report, skip=4, nrow=570)
        colnames(trend)[1] <- "Date"
        trend$Date <- week.to.date(trend$Date)
        
@@ -44,7 +41,7 @@ shinyServer(function(input, output) {
        model.and.plot('sb.09', smt9.xts, future.xts, "randomForest", "ntree=50")
     })
 
-    searchterms <- read.csv("report.csv", skip=4, nrow=1)
+    searchterms <- read.csv(latest.report, skip=4, nrow=1)
 
     output$SearchTerms  <-  renderText({paste("Search Terms: ", paste(collapse=" ",  names(searchterms[-1])))})    
 

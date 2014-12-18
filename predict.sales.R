@@ -25,7 +25,9 @@ go <- function(){
     c09$Date<-as.Date(as.yearmon(c09$Date, format="%b-%Y"))
 
     ##Weekly
-    trend <- read.csv("report.csv", skip=4, nrow=570)
+    latest.report <- choose.newest.file("~/Downloads", "report*.csv")
+
+    trend <- read.csv(latest.report, skip=4, nrow=570)
     colnames(trend)[1] <- "Date"
     trend$Date <- week.to.date(trend$Date)
 
@@ -60,16 +62,22 @@ go <- function(){
 
 model.and.plot <- function(dependent, series, future, modeller, param){
     #Model the dependent variable in the time series, and predict its value in the future 
+    eval(parse(text=paste0("observed <- series$", dependent)))
     eval(parse(text=paste0("model<-", modeller, '(', dependent, "~., series, ", param, ')')))
     fitted <- predict(model,series)
     fitted <- as.xts(fitted, order.by=index(series))
 
     future.dependent <- predict(model, future)
     future.dependent <- as.xts(future.dependent, order.by = index(future))
+    max.future.dependent <- future.dependent[which.max(future.dependent)]
     fitted.and.future <- c(fitted, future.dependent)
-    plot(fitted.and.future, main=paste0(modeller, " ", param), ylab=dependent, ylim=c(0, max(fitted)))
-    eval(parse(text=paste0("points(series$",dependent,", type='p', pch=16)")))
-    summary(model)
+        rsq <- 1 - sum((fitted-mean(observed))^2) / sum((observed-mean(observed))^2)
+    label <- c(paste0(modeller, " ", param),
+               paste0("Max Future ", prettyNum(big.mark=",", round(digits=0,max.future.dependent))),
+               paste0("R.Sq = ", round(digits=2,rsq)))
+    plot(fitted.and.future, main=label, ylab=dependent, ylim=c(0, max(fitted)))
+    points(observed,, type='p', pch=16)
+    points(max.future.dependent, type='p', pch=5)
 }
 
 
@@ -86,4 +94,13 @@ quarter.to.date <- function(Quarters){
 ##Convert "2004-02-15 - 2004-02-21" to "2004-02-15"
 week.to.date <- function(week){
      as.Date(data.frame(t(data.frame(strsplit(sapply(week, toString), " "))))[,1], "%Y-%m-%d")
+}
+
+##
+choose.newest.file <- function(download.directory, pattern){
+    names <- list.files(download.directory,  glob2rx(pattern), full.names=TRUE)
+    if(length(names)==1)
+        names
+    else 
+       names[which.max(file.info(names)$mtime)]
 }
