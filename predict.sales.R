@@ -71,11 +71,12 @@ model.and.plot <- function(dependent, series, future, modeller, param){
     future.dependent <- as.xts(future.dependent, order.by = index(future))
     max.future.dependent <- future.dependent[which.max(future.dependent)]
     fitted.and.future <- c(fitted, future.dependent)
-        rsq <- 1 - sum((fitted-mean(observed))^2) / sum((observed-mean(observed))^2)
+
+    rsq <- 1 - sum((observed-fitted)^2) / sum((observed-mean(observed))^2)
     label <- c(paste0(modeller, " ", param),
                paste0("Max Future ", prettyNum(big.mark=",", round(digits=0,max.future.dependent))),
                paste0("R.Sq = ", round(digits=2,rsq)))
-    plot(fitted.and.future, main=label, ylab=dependent, ylim=c(0, max(fitted)))
+    plot(fitted.and.future, main=label, ylab=dependent, ylim=c(0, max(observed)))
     points(observed,, type='p', pch=16)
     points(max.future.dependent, type='p', pch=5)
 }
