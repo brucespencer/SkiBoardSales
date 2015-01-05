@@ -25,7 +25,8 @@ go <- function(){
     c09$Date<-as.Date(as.yearmon(c09$Date, format="%b-%Y"))
 
     ##Weekly
-    latest.report <- choose.newest.file("C:/Users/richard/Downloads", "report*.csv")
+    #latest.report <- choose.newest.file("C:/Users/user.name/Downloads", "report*.csv") #for PC
+    latest.report <- choose.newest.file("~/Downloads", "report*.csv")                   #for Mac
 
     trend <- read.csv(latest.report, skip=4, nrow=570)
     colnames(trend)[1] <- "Date"
