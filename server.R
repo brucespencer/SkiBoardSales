@@ -4,7 +4,7 @@ source("predict.sales.R")
 
 shinyServer(function(input, output) {
 
-    latest.report <- choose.newest.file("~/Downloads", "report*.csv")
+    latest.report <- choose.newest.file("C:/Users/richard/Downloads", "report*.csv")
 
     output$salesPlot <- renderPlot({
         

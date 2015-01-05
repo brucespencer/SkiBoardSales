@@ -25,7 +25,7 @@ go <- function(){
     c09$Date<-as.Date(as.yearmon(c09$Date, format="%b-%Y"))
 
     ##Weekly
-    latest.report <- choose.newest.file("~/Downloads", "report*.csv")
+    latest.report <- choose.newest.file("C:/Users/richard/Downloads", "report*.csv")
 
     trend <- read.csv(latest.report, skip=4, nrow=570)
     colnames(trend)[1] <- "Date"
@@ -62,8 +62,13 @@ go <- function(){
 
 model.and.plot <- function(dependent, series, future, modeller, param){
     #Model the dependent variable in the time series, and predict its value in the future 
-    eval(parse(text=paste0("observed <- series$", dependent)))
-    eval(parse(text=paste0("model<-", modeller, '(', dependent, "~., series, ", param, ')')))
+    #eval(parse(text=paste0("observed <- series$", dependent)))
+    observed <- series[,dependent]
+  
+    #eval(parse(text=paste0("model<-", modeller, '(', dependent, "~., series, ", param, ')')))
+    model <- eval(parse(text=paste0(modeller, '(', dependent, "~., series, ", param, ')')))
+    
+    
     fitted <- predict(model,series)
     fitted <- as.xts(fitted, order.by=index(series))
 
