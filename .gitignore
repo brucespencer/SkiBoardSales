@@ -3,3 +3,4 @@
 .Rdata
 *.Rout
 CSV/
+.Rproj.user
